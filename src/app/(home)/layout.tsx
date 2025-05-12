@@ -1,4 +1,4 @@
-import { Navbar } from "@/modules/home/ui/navbar";
+import { Navbar } from "@/modules/home/ui/components/navbar";
 
 // LayoutProps - Props for the Layout component
 interface LayoutProps {

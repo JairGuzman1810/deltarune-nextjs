@@ -1,4 +1,4 @@
-import { HomeSection } from "@/modules/home/sections/home-section";
+import { HomeSection } from "@/modules/home/ui/sections/home-section";
 
 // Home - Root layout for the homepage composed of multiple stacked sections
 export default function Home() {

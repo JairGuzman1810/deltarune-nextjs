@@ -8,7 +8,9 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --color-nav-blue: var(--color-nav-blue);
+  --color-nav-blue: var(--nav-blue);
+  --color-deltarune-yellow: var(--deltarune-yellow);
+  --color-deltarune-gray: var(--deltarune-gray);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 
@@ -30,7 +32,9 @@
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
-    --color-nav-blue: #342db5;
+    --nav-blue: #342db5;
+    --deltarune-yellow: #f9ff10;
+    --deltarune-gray: #7f7f7f;
   }
 }
 
@@ -38,4 +42,19 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+.highlight-yellow {
+  color: #f9ff10;
+  color: var(--color-deltarune-yellow);
+  filter: drop-shadow(1px 1px #4c4c00);
+  line-height: 1.2;
+  background-image: repeating-linear-gradient(
+    to bottom,
+    #ffffc3,
+    #ffff2c 1em 1.2em
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }

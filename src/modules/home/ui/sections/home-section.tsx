@@ -1,5 +1,5 @@
 import Image from "next/image";
-
+import { Countdown } from "../components/countdown";
 // HomeSection - Landing section of the homepage with animated spire backgrounds and site logo
 export const HomeSection = () => {
   return (
@@ -35,6 +35,9 @@ export const HomeSection = () => {
       <h2 className="text-white text-3xl md:text-5xl text-center mt-4 mb-12">
         Chapters 1-4
       </h2>
+
+      {/* Countdown  */}
+      <Countdown />
     </section>
   );
 };
