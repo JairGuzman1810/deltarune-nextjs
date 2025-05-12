@@ -7,42 +7,53 @@ import { TimeUnit } from "./time-unit";
 
 // Countdown - Displays a live countdown timer until the release date
 export const Countdown = () => {
+  // State to track if the component has mounted (client-side)
+  const [hasMounted, setHasMounted] = useState(false);
+
   // State to store the remaining time
   const [timeLeft, setTimeLeft] = useState<TimeLeft>({
     days: 0, // Days remaining
-    hours: 0,
+    hours: 0, // Hours remaining
     minutes: 0,
     seconds: 0,
   });
 
   // Effect to update the countdown every second
   useEffect(() => {
-    // updateCountdown - Recalculates the remaining time
+    // Set mounted flag to true once the component has mounted (client-side)
+    setHasMounted(true);
+
+    // updateCountdown - Function to update the countdown timer based on the release date
     const updateCountdown = () => {
-      setTimeLeft(calculateTimeLeft(RELEASE_DATE)); // Recalculate remaining time
+      setTimeLeft(calculateTimeLeft(RELEASE_DATE)); // Recalculate the remaining time
     };
 
-    updateCountdown(); // Initial call
-
+    updateCountdown(); // Initial update of the countdown
     const timer = setInterval(updateCountdown, 1000); // Update countdown every second
 
-    return () => clearInterval(timer); // Cleanup on unmount
-  }, []);
+    // Cleanup the interval timer on component unmount
+    return () => clearInterval(timer);
+  }, []); // Empty dependency array means this effect runs once when the component mounts
+
+  // If the component hasn't mounted yet, return null to avoid SSR mismatches
+  if (!hasMounted) return null;
 
   return (
     <div>
-      {/* Release date message */}
-      <h3 className="highlight-yellow text-xl md:text-3xl text-center m-4 min-h-10">
+      {/* Header displaying the release date */}
+      <h3 className="highlight-yellow text-xl md:text-3xl text-center m-4 min-h-10 motion-safe:animate-fade-in">
         Releasing on June 5, 2025
       </h3>
 
       {/* Countdown timer in pixel font */}
       <h3 className="text-deltarune-gray text-3xl md:text-5xl font-pixel text-center mb-16 h-16 motion-safe:animate-fade-in">
+        {/* Flex container for time units */}
         <div className="flex gap-x-2 items-center justify-center">
-          <TimeUnit value={timeLeft.days} /> {/* Days */}
-          <TimeUnit value={timeLeft.hours} /> {/* Hours */}
-          <TimeUnit value={timeLeft.minutes} /> {/* Minutes */}
-          <TimeUnit value={timeLeft.seconds} isLast /> {/* Seconds */}
+          {/* TimeUnit component for each unit of time */}
+          <TimeUnit value={timeLeft.days} /> {/* Display days */}
+          <TimeUnit value={timeLeft.hours} /> {/* Display hours */}
+          <TimeUnit value={timeLeft.minutes} /> {/* Display minutes */}
+          <TimeUnit value={timeLeft.seconds} isLast /> {/* Display seconds */}
         </div>
       </h3>
     </div>
