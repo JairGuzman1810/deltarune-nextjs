@@ -4,8 +4,8 @@ import localFont from "next/font/local";
 import "./globals.css";
 
 // font8bitOperatorPlus - Local 8-bit pixel font used for retro theme
-const font8bitOperatorPlus = localFont({
-  src: "../../public/fonts/8bitOperatorPlus-Bold.woff",
+const font8bitOperatorPlusBold = localFont({
+  src: "../../public/fonts/8bitOperatorPlus-Bold.ttf",
 });
 
 // metadata - SEO and social metadata for the site
@@ -48,7 +48,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${font8bitOperatorPlus.className} antialiased`}>
+      <body className={`${font8bitOperatorPlusBold.className} antialiased`}>
         {children}
       </body>
     </html>

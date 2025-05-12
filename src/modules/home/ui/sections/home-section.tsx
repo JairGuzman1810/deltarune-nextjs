@@ -1,10 +1,10 @@
 import Image from "next/image";
 import { Countdown } from "../components/countdown";
-
+import { VideoPlayer } from "../components/video-player";
 // HomeSection - Landing section of the homepage with animated spire backgrounds and site logo
 export const HomeSection = () => {
   return (
-    <section className="relative container mx-auto max-w-2xl px-4 h-screen">
+    <section className="relative container mx-auto max-w-2xl px-4">
       {/* Left spire image with fade-in-top animation */}
       <Image
         src="/assets/images/spire-fade.png"
@@ -39,6 +39,9 @@ export const HomeSection = () => {
 
       {/* Countdown  */}
       <Countdown />
+
+      {/* Video Player */}
+      <VideoPlayer />
     </section>
   );
 };

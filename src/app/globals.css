@@ -11,6 +11,7 @@
   --color-nav-blue: var(--nav-blue);
   --color-deltarune-yellow: var(--deltarune-yellow);
   --color-deltarune-gray: var(--deltarune-gray);
+  --color-deltarune-blue: var(--deltarune-blue);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 
@@ -45,6 +46,7 @@
     --nav-blue: #342db5;
     --deltarune-yellow: #f9ff10;
     --deltarune-gray: #7f7f7f;
+    --deltarune-blue: #0000ff;
   }
 }
 
