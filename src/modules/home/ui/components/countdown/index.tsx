@@ -7,22 +7,16 @@ import { TimeUnit } from "./time-unit";
 
 // Countdown - Displays a live countdown timer until the release date
 export const Countdown = () => {
-  // State to track if the component has mounted (client-side)
-  const [hasMounted, setHasMounted] = useState(false);
-
   // State to store the remaining time
   const [timeLeft, setTimeLeft] = useState<TimeLeft>({
     days: 0, // Days remaining
     hours: 0, // Hours remaining
-    minutes: 0,
+    minutes: 0, // Minutes remaining
     seconds: 0,
   });
 
   // Effect to update the countdown every second
   useEffect(() => {
-    // Set mounted flag to true once the component has mounted (client-side)
-    setHasMounted(true);
-
     // updateCountdown - Function to update the countdown timer based on the release date
     const updateCountdown = () => {
       setTimeLeft(calculateTimeLeft(RELEASE_DATE)); // Recalculate the remaining time
@@ -34,9 +28,6 @@ export const Countdown = () => {
     // Cleanup the interval timer on component unmount
     return () => clearInterval(timer);
   }, []); // Empty dependency array means this effect runs once when the component mounts
-
-  // If the component hasn't mounted yet, return null to avoid SSR mismatches
-  if (!hasMounted) return null;
 
   return (
     <div>
