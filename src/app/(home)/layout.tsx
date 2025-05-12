@@ -1,13 +1,17 @@
 import { Navbar } from "@/modules/home/ui/navbar";
 
+// LayoutProps - Props for the Layout component
 interface LayoutProps {
-  children: React.ReactNode;
+  children: React.ReactNode; // Content to render below the Navbar
 }
 
+// Layout - Renders the home page layout with a Navbar and content wrapper
 const Layout = ({ children }: LayoutProps) => {
   return (
     <div>
+      {/* Render the top navigation bar */}
       <Navbar />
+      {/* Render the page content */}
       {children}
     </div>
   );

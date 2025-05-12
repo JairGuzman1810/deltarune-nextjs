@@ -16,8 +16,8 @@ export const NavbarFlagItem = ({ href, src, alt }: NavbarFlagItemProps) => {
         <Image
           src={src}
           alt={alt}
-          width={40}
-          height={40}
+          width={38}
+          height={26}
           className="cursor-pointer hover:opacity-80"
         />
       </Link>
