@@ -4,7 +4,7 @@ import { HomeSection } from "../sections/home-section";
 export const HomeView = () => {
   return (
     <main>
-      <div className="flex flex-col gap-16 py-16 overflow-hidden">
+      <div className="flex flex-col gap-16 py-16 overflow-hidden bg-black">
         {/* Render the landing section */}
         <HomeSection />
       </div>

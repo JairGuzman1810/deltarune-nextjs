@@ -15,10 +15,13 @@ export const VideoPlayer = () => {
   const [isPlaying, setIsPlaying] = useState(false); // Track whether video is playing
 
   return (
-    <div className="space-y-2">
+    <div
+      className="space-y-2 motion-safe:opacity-0 motion-safe:animate-fade-in"
+      style={{ animationDelay: "0.2s" }}
+    >
       {/* If playing, show embedded YouTube iframe */}
       {isPlaying ? (
-        <div className="relative border-2 border-deltarune-gray aspect-video motion-safe:opacity-0 motion-safe:animate-fade-in bg-black hover:border-white transition-colors">
+        <div className="relative border-2 border-deltarune-gray aspect-video bg-black hover:border-white transition-colors">
           <iframe
             src="https://www.youtube-nocookie.com/embed/yDzgiGdekas?autoplay=1"
             className="w-full h-full"
@@ -29,7 +32,7 @@ export const VideoPlayer = () => {
       ) : (
         // If not playing, show thumbnail with play button overlay
         <div
-          className="group relative border-2 border-deltarune-gray aspect-video motion-safe:opacity-0 motion-safe:animate-fade-in bg-black hover:border-white transition-colors cursor-pointer"
+          className="group relative border-2 border-deltarune-gray aspect-video bg-black hover:border-white transition-colors cursor-pointer"
           onClick={() => setIsPlaying(true)} // Enable playback when user clicks the thumbnail
         >
           {/* Thumbnail image */}
