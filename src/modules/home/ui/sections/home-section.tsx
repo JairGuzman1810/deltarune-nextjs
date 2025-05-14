@@ -12,7 +12,7 @@ export const HomeSection = () => {
         alt="Spire"
         width={194}
         height={1434}
-        className="absolute w-24 md:w-32 top-0 left-4 md:-left-16 z-0 motion-safe:animate-fade-in-top motion-safe:translate-y-0 h-[700px] md:h-[800px]"
+        className="absolute w-24 md:w-32 top-0 left-4 md:-left-16 z-[-10] motion-safe:animate-fade-in-top motion-safe:translate-y-0 h-[695px] md:h-[800px]"
       />
 
       {/* Right spire image rotated 180° with fade-in-top animation */}
@@ -21,7 +21,7 @@ export const HomeSection = () => {
         alt="Spire"
         width={194}
         height={1434}
-        className="absolute w-24 md:w-32 -top-96 right-4 md:-right-16 z-0 rotate-180 motion-safe:animate-fade-in-top motion-safe:translate-y-0"
+        className="absolute w-24 md:w-32 -top-96 right-4 md:-right-16 z-[-10] rotate-180 motion-safe:animate-fade-in-top motion-safe:translate-y-0"
       />
 
       {/* Centered DELTARUNE logo */}
@@ -30,7 +30,7 @@ export const HomeSection = () => {
         alt="DELTARUNE"
         width={1150}
         height={167}
-        className="w-lg mx-auto"
+        className="w-lg mx-auto z-10"
       />
 
       {/* Subtitle below the logo */}
