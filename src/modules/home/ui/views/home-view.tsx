@@ -1,3 +1,4 @@
+import { DemoSection } from "../sections/demo-section";
 import { GameSection } from "../sections/game-section";
 import { HomeSection } from "../sections/home-section";
 
@@ -11,6 +12,9 @@ export const HomeView = () => {
 
         {/* Render the game section */}
         <GameSection />
+
+        {/* Render the demo section */}
+        <DemoSection />
       </div>
     </main>
   );
