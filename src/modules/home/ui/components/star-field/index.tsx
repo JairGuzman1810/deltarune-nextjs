@@ -1,5 +1,3 @@
-"use client"; // Enable client-side rendering
-
 import { useEffect, useState } from "react";
 import { Star } from "./star";
 
