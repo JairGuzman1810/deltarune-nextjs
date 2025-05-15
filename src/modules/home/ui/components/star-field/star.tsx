@@ -1,30 +1,6 @@
+import { starSizes, StarType } from "@/lib/type";
 import Image from "next/image";
 import { useEffect, useState } from "react";
-
-// StarType - Allowed image types for star visuals
-export type StarType =
-  | "star1"
-  | "star2"
-  | "star3"
-  | "star4"
-  | "star5"
-  | "star6";
-
-// StarSize - Dimensions for each star type
-export interface StarSize {
-  width: number; // Width of the star image
-  height: number; // Height of the star image
-}
-
-// starSizes - Maps star types to image dimensions
-export const starSizes: Record<StarType, StarSize> = {
-  star1: { width: 21, height: 21 }, // Default size for star1
-  star2: { width: 21, height: 21 }, // Default size for star2
-  star3: { width: 21, height: 20 }, // Slightly shorter height for star3
-  star4: { width: 15, height: 15 }, // Smaller size for star4
-  star5: { width: 3, height: 3 }, // Tiny star5
-  star6: { width: 39, height: 66 }, // Special large star
-};
 
 // StarProps - Props expected by the Star component
 export interface StarProps {
@@ -63,9 +39,8 @@ export const Star = ({
 
   return (
     <Image
-      className="absolute opacity-70 animate-pulse motion-safe:translate-y-0 parallax" // Styling and animation classes
+      className="absolute opacity-70 animate-pulse motion-safe:translate-y-0" // Styling and animation classes
       data-distance={distance} // Custom attribute for tracking parallax distance
-      data-scroll-target="parallax" // For scroll-based animation targeting
       src={src} // Star image source
       width={width} // Image width
       height={height} // Image height
