@@ -11,10 +11,10 @@ export const DemoSection = () => {
 
   return (
     <section
+      id="demo"
       ref={ref}
       style={style}
       className="relative w-full text-center mb-32 pt-8"
-      id="demo"
     >
       {/* Background animated starfield */}
       <Starfield />

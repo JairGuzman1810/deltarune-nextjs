@@ -4,8 +4,8 @@ import { PlatformGrid } from "../components/platform-grid";
 export const GameSection = () => {
   return (
     <section
-      className="container mx-auto max-w-2xl px-4 flex flex-col gap-4 text-center motion-safe:animate-fade-in motion-safe:opacity-0 motion-safe:translate-y-4"
       id="game"
+      className="container mx-auto max-w-2xl px-4 flex flex-col gap-4 text-center motion-safe:animate-fade-in motion-safe:opacity-0 motion-safe:translate-y-4"
       style={{ animationDelay: "0.5s" }}
     >
       {/* Heading for platform section */}

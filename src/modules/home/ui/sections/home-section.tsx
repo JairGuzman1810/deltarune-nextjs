@@ -5,7 +5,7 @@ import { VideoPlayer } from "../components/video-player";
 // HomeSection - Landing section of the homepage with animated spire backgrounds and site logo
 export const HomeSection = () => {
   return (
-    <section className="relative container mx-auto max-w-2xl px-4" id="home">
+    <section id="home" className="relative container mx-auto max-w-2xl px-4">
       {/* Left spire image with fade-in-top animation */}
       <Image
         src="/assets/images/spire-fade.png"

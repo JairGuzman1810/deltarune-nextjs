@@ -32,12 +32,12 @@ export const Countdown = () => {
   return (
     <div>
       {/* Header displaying the release date */}
-      <h3 className="highlight-yellow text-xl md:text-3xl text-center m-4 min-h-10 motion-safe:animate-fade-in">
-        Releasing on June 5, 2025
+      <h3 className="highlight-yellow text-xl md:text-3xl text-center m-4 min-h-10">
+        Releasing on June 4, 2025
       </h3>
 
       {/* Countdown timer in pixel font */}
-      <h3 className="text-deltarune-gray text-3xl md:text-5xl font-pixel text-center mb-16 h-16 motion-safe:animate-fade-in">
+      <h3 className="text-deltarune-gray text-3xl md:text-5xl text-center mb-4 h-16">
         {/* Flex container for time units */}
         <div className="flex gap-x-2 items-center justify-center">
           {/* TimeUnit component for each unit of time */}
@@ -46,6 +46,10 @@ export const Countdown = () => {
           <TimeUnit value={timeLeft.minutes} /> {/* Display minutes */}
           <TimeUnit value={timeLeft.seconds} isLast /> {/* Display seconds */}
         </div>
+      </h3>
+
+      <h3 className="text-deltarune-gray text-center mb-12 min-h-10 text-base">
+        * June 5 in Japan, Australia, and New Zealand
       </h3>
     </div>
   );
