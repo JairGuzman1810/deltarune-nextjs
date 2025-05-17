@@ -32,8 +32,8 @@ export const Particle = ({
   useEffect(() => {
     // calculateParallax - Applies a parallax offset based on scroll and distance
     const calculateParallax = (): void => {
-      const scrollY = window.scrollY || window.pageYOffset;
-      setTranslateY(-((distance * scrollY) / 300));
+      const scrollY = window.scrollY; // Get the current scroll position
+      setTranslateY(-((distance * scrollY) / 300)); // Apply parallax effect based on distance and scroll position
     };
 
     calculateParallax(); // Run on mount

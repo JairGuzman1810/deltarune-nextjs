@@ -89,7 +89,7 @@ const createStar = (x: number, y: number, useSpecialStar: boolean = false) => {
     starType = Math.floor(Math.random() * 5) + 1; // Otherwise pick random star1 to star5
   }
 
-  const delay = Math.floor(Math.random() * 6) + 1; // Random delay from -1s to -6s
+  const delay = Math.floor(Math.random() * 6) + 1; // Random delay from 1s to 6s
   const distance = Math.floor(Math.random() * 20) + 10; // Random parallax distance from 10 to 29
 
   y += distance * 2; // Offset Y to simulate depth effect

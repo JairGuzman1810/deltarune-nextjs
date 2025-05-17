@@ -22,17 +22,19 @@ export const Star = ({
   const [translateY, setTranslateY] = useState<number>(0); // State for vertical translation
 
   useEffect(() => {
-    // calculateParallax - Simplified placeholder for vertical parallax shift
+    // calculateParallax - Applies a parallax offset based on scroll and distance
     const calculateParallax = (): void => {
-      setTranslateY(-(distance * 2.5)); // Fixed offset per star's distance
+      const scrollY = window.scrollY;
+      setTranslateY(-((distance * scrollY) / 300)); // Applies a parallax offset based on scroll and distance
     };
 
     calculateParallax(); // Run on mount
 
     window.addEventListener("scroll", calculateParallax); // Listen to scroll for dynamic parallax
 
-    return () => window.removeEventListener("scroll", calculateParallax); // Cleanup listener on unmount
-  }, [distance]);
+    // Cleanup event listener on component unmount
+    return () => window.removeEventListener("scroll", calculateParallax);
+  }, [distance]); // Re-run effect if distance changes
 
   const starType = src.split("/").pop()?.split(".")[0] as StarType; // Extract star type from filename
   const { width, height } = starSizes[starType] || { width: 20, height: 20 }; // Get dimensions or fallback
