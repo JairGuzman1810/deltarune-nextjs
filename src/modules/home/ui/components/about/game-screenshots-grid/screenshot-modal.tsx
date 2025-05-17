@@ -122,7 +122,7 @@ export const ScreenshotModal = ({
       <div
         className={`fixed inset-0 z-[1000] transition-colors duration-300 ease-in-out ${
           animState === "open"
-            ? "bg-black bg-opacity-90 pointer-events-auto" // Active
+            ? "bg-[#18181bfa]  pointer-events-auto" // Active
             : "bg-transparent pointer-events-none" // Inactive
         }`}
         onClick={handleClose}
@@ -134,10 +134,8 @@ export const ScreenshotModal = ({
         onTransitionEnd={onTransitionEnd} // Cleanup after transition
         aria-modal="true"
         role="dialog"
-        className={`fixed z-[1001] cursor-zoom-out overflow-hidden shadow-[0_0_20px_rgba(0,0,0,0.6)] rounded-lg transition-all duration-300 ease-in-out flex items-center justify-center bg-black ${
-          animState === "open"
-            ? "top-0 left-0 w-screen h-screen rounded-none" // Expand to full screen
-            : ""
+        className={`fixed z-[1001] cursor-zoom-out overflow-hidden shadow-[0_0_20px_rgba(0,0,0,0.6)] rounded-lg transition-all duration-300 ease-in-out flex items-center justify-center bg-[#18181bfa] ${
+          animState === "open" && "top-0 left-0 w-screen h-screen rounded-none" // Expand to full screen
         }`}
         style={positionStyles}
         onClick={handleClose}
