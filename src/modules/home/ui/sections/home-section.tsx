@@ -1,6 +1,6 @@
 import Image from "next/image";
-import { Countdown } from "../components/countdown";
-import { VideoPlayer } from "../components/video-player";
+import { Countdown } from "../components/home/countdown";
+import { VideoPlayer } from "../components/home/video-player";
 
 // HomeSection - Landing section of the homepage with animated spire backgrounds and site logo
 export const HomeSection = () => {

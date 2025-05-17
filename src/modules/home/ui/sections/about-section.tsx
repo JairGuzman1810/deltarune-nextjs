@@ -2,7 +2,7 @@
 
 import { useFadeInOnScroll } from "@/hook/useFadeInOnScroll";
 import Image from "next/image";
-import ParticleField from "../components/particle-field";
+import ParticleField from "../components/about/particle-field";
 
 // AboutSection - Section that displays the animated particle background with logo and title
 export const AboutSection = () => {

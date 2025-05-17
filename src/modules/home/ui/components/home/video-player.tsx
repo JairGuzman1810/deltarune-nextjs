@@ -7,7 +7,7 @@ import { useState } from "react";
 
 // Load 8bitOperatorPlus-Regular font from local public directory
 const font8bitOperatorPlusRegular = localFont({
-  src: "../../../../../public/fonts/8bitOperatorPlus-Regular.ttf",
+  src: "../../../../../../public/fonts/8bitOperatorPlus-Regular.ttf",
 });
 
 // VideoPlayer - Handles toggling between thumbnail and video iframe

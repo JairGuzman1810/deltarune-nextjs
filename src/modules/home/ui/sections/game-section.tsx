@@ -1,4 +1,4 @@
-import { PlatformGrid } from "../components/platform-grid";
+import { PlatformGrid } from "../components/game/platform-grid";
 
 // GameSection - Game section of the homepage with platform logos and wishlist call to action
 export const GameSection = () => {

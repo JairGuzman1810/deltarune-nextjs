@@ -2,8 +2,8 @@
 
 import { useFadeInOnScroll } from "@/hook/useFadeInOnScroll";
 import Image from "next/image";
-import { PlatformCard } from "../components/platform-card";
-import { Starfield } from "../components/star-field";
+import { PlatformCard } from "../components/demo/platform-card";
+import { Starfield } from "../components/demo/star-field";
 
 // DemoSection - Demo section with background, logo, and platform cards
 export const DemoSection = () => {
