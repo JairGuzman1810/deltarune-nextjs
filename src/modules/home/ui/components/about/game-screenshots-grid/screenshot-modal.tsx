@@ -16,6 +16,9 @@ interface ScreenshotModalProps {
   getOriginRect?: (index: number) => DOMRect | null; // Optional function to get updated origin rect
 }
 
+// AnimationState - Represents the state of the modal animation
+type AnimationState = "opening" | "open" | "closing";
+
 // ScreenshotModal - Fullscreen modal to view images with animated transitions and navigation
 export const ScreenshotModal = ({
   images,
@@ -23,11 +26,9 @@ export const ScreenshotModal = ({
   onClose,
   getOriginRect,
 }: ScreenshotModalProps) => {
-  const [animState, setAnimState] = useState<"opening" | "open" | "closing">(
-    "opening"
-  ); // Tracks animation state
-  const [currentIndex, setCurrentIndex] = useState(initialIndex); // Tracks which image is currently shown
-  const [isTransitioning, setIsTransitioning] = useState(false); // Prevents input during animation
+  const [animState, setAnimState] = useState<AnimationState>("opening"); // State for animation
+  const [currentIndex, setCurrentIndex] = useState(initialIndex); // Current index of image
+  const [isTransitioning, setIsTransitioning] = useState(false); // Transition state
   const [currentOriginRect, setCurrentOriginRect] = useState<DOMRect>(
     images[initialIndex].originRect // Initial rect from clicked image
   );
@@ -78,27 +79,19 @@ export const ScreenshotModal = ({
     setIsTransitioning(false); // Reset transition lock
   };
 
-  // goPrev - Navigate to previous image (with wrap-around)
-  const goPrev = (e: React.MouseEvent) => {
+  // navigate - Navigates to the previous or next image
+  const navigate = (direction: "prev" | "next") => (e: React.MouseEvent) => {
     e.stopPropagation(); // Prevent modal close
     if (isTransitioning) return; // Block if already transitioning
     setIsTransitioning(true); // Lock transition
-    const newIndex = currentIndex === 0 ? images.length - 1 : currentIndex - 1; // Wrap to last if needed
-    setCurrentIndex(newIndex); // Update current image
-
-    // Update origin rect for new image
-    if (getOriginRect) {
-      const newRect = getOriginRect(newIndex); // Update origin rect for new image
-      if (newRect) setCurrentOriginRect(newRect);
-    }
-  };
-
-  // goNext - Navigate to next image (with wrap-around)
-  const goNext = (e: React.MouseEvent) => {
-    e.stopPropagation(); // Prevent modal close
-    if (isTransitioning) return; // Block if already transitioning
-    setIsTransitioning(true); // Lock transition
-    const newIndex = currentIndex === images.length - 1 ? 0 : currentIndex + 1; // Wrap to first if needed
+    const newIndex =
+      direction === "prev"
+        ? currentIndex === 0
+          ? images.length - 1
+          : currentIndex - 1
+        : currentIndex === images.length - 1
+        ? 0
+        : currentIndex + 1; // Wrap around if needed
     setCurrentIndex(newIndex); // Update current image
 
     if (getOriginRect) {
@@ -187,18 +180,18 @@ export const ScreenshotModal = ({
             onClick={handleClose}
             aria-label="Close modal"
             type="button"
-            className="fixed top-5 right-5 z-[1002] w-10 h-10 rounded-full bg-black bg-opacity-60 text-white text-2xl leading-none cursor-pointer select-none border-none flex items-center justify-center hover:text-deltarune-yellow"
+            className="fixed top-5 right-5 z-[1002] w-10 h-10 rounded-full bg-black hover:bg-gray-800 duration-150 transition-all text-white text-2xl leading-none cursor-pointer select-none border-none flex items-center justify-center hover:text-deltarune-yellow pb-1"
           >
             ×
           </button>
 
           {/* Previous image button */}
           <button
-            onClick={goPrev}
+            onClick={navigate("prev")}
             aria-label="Previous image"
             type="button"
-            className={`fixed top-1/2 left-5 z-[1002] w-12 h-12 -translate-y-1/2 rounded-full bg-black bg-opacity-60 text-white text-3xl leading-none cursor-pointer select-none border-none flex items-center justify-center hover:text-deltarune-yellow ${
-              isTransitioning ? "opacity-50 cursor-not-allowed" : "" // Disabled during transition
+            className={`fixed top-1/2 left-5 z-[1002] w-12 h-12 -translate-y-1/2 rounded-full bg-black bg-opacity-60 text-white/70 text-3xl leading-none cursor-pointer select-none border-none flex items-center justify-center hover:text-deltarune-yellow ${
+              isTransitioning && "opacity-50 cursor-not-allowed" // Disabled during transition
             }`}
             disabled={isTransitioning}
           >
@@ -207,11 +200,11 @@ export const ScreenshotModal = ({
 
           {/* Next image button */}
           <button
-            onClick={goNext}
+            onClick={navigate("next")}
             aria-label="Next image"
             type="button"
-            className={`fixed top-1/2 right-5 z-[1002] w-12 h-12 -translate-y-1/2 rounded-full bg-black bg-opacity-60 text-white text-3xl leading-none cursor-pointer select-none border-none flex items-center justify-center hover:text-deltarune-yellow ${
-              isTransitioning ? "opacity-50 cursor-not-allowed" : "" // Disabled during transition
+            className={`fixed top-1/2 right-5 z-[1002] w-12 h-12 -translate-y-1/2 rounded-full bg-black bg-opacity-60 text-white/70 text-3xl leading-none cursor-pointer select-none border-none flex items-center justify-center hover:text-deltarune-yellow ${
+              isTransitioning && "opacity-50 cursor-not-allowed" // Disabled during transition
             }`}
             disabled={isTransitioning}
           >

@@ -10,15 +10,17 @@ const screenshots = [
   { src: "/assets/images/ss-4-en.png", alt: "Screenshot of DELTARUNE" },
   { src: "/assets/images/ss-5-en.png", alt: "Screenshot of DELTARUNE" },
   { src: "/assets/images/ss-6-en.png", alt: "Screenshot of DELTARUNE" },
-];
+] as const;
+
+type SelectedState = {
+  originRect: DOMRect;
+  index: number;
+} | null;
 
 // GameScreenshotsGrid - Renders a responsive grid of screenshots with modal zoom preview
 export const GameScreenshotsGrid = () => {
   // selected - Tracks which screenshot is active in the modal
-  const [selected, setSelected] = useState<{
-    originRect: DOMRect;
-    index: number;
-  } | null>(null);
+  const [selected, setSelected] = useState<SelectedState>(null);
 
   // itemRefs - Holds references to each screenshot item DOM node
   const itemRefs = useRef<(HTMLDivElement | null)[]>(
@@ -39,19 +41,10 @@ export const GameScreenshotsGrid = () => {
     setSelected({ originRect: rect, index }); // Set the selected state with the origin rect and index
   };
 
-  // handleClose - Resets the selected state to close the modal
-  const handleClose = () => setSelected(null);
-
   // getOriginRect - Retrieves the DOMRect of the image at the given index
   const getOriginRect = (index: number) => {
-    const el = itemRefs.current[index]; // Get the image element from the clicked item
-    if (!el) return null; // If no image element, return null
-
-    // Get the image element from the clicked item
-    const imgEl = el.querySelector("img");
-    if (!imgEl) return null; // If no image element, return null
-
-    return imgEl.getBoundingClientRect(); // Return the bounding client rect of the image
+    const imgEl = itemRefs.current[index]?.querySelector("img");
+    return imgEl?.getBoundingClientRect() ?? null;
   };
 
   return (
@@ -63,8 +56,8 @@ export const GameScreenshotsGrid = () => {
             key={i}
             screenshot={screenshot}
             onClick={(e) => handleItemClick(i, e)}
-            ref={(el: HTMLDivElement | null) => {
-              itemRefs.current[i] = el; // Store reference for later bounding box access
+            ref={(el) => {
+              itemRefs.current[i] = el;
             }}
           />
         ))}
@@ -78,7 +71,7 @@ export const GameScreenshotsGrid = () => {
             originRect: selected.originRect, // Attach current originRect to each image object
           }))}
           initialIndex={selected.index}
-          onClose={handleClose}
+          onClose={() => setSelected(null)}
           getOriginRect={getOriginRect}
         />
       )}
