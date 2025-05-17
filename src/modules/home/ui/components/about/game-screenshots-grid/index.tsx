@@ -1,8 +1,8 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { GameScreenshotsItem } from "./game-screenshots-item";
 import { ScreenshotModal } from "./screenshot-modal";
 
-// Static array of screenshot data with source and alt text
+// Static list of screenshots used in the grid and modal preview
 const screenshots = [
   { src: "/assets/images/ss-1-en.png", alt: "Screenshot of DELTARUNE" },
   { src: "/assets/images/ss-2-en.png", alt: "Screenshot of DELTARUNE" },
@@ -12,56 +12,74 @@ const screenshots = [
   { src: "/assets/images/ss-6-en.png", alt: "Screenshot of DELTARUNE" },
 ];
 
-// GameScreenshotsGrid - Displays screenshot thumbnails and handles modal open/close
+// GameScreenshotsGrid - Renders a responsive grid of screenshots with modal zoom preview
 export const GameScreenshotsGrid = () => {
-  // State for currently selected screenshot and its bounding rect for animation
+  // selected - Tracks which screenshot is active in the modal
   const [selected, setSelected] = useState<{
-    originRect: DOMRect; // Bounding rectangle of clicked image element
-    index: number; // Index of selected screenshot
+    originRect: DOMRect;
+    index: number;
   } | null>(null);
 
-  // Handles clicking a screenshot item to open modal
+  // itemRefs - Holds references to each screenshot item DOM node
+  const itemRefs = useRef<(HTMLDivElement | null)[]>(
+    Array(screenshots.length).fill(null)
+  );
+
+  // handleItemClick - Handles click on a screenshot item and opens modal
   const handleItemClick = (
-    index: number, // Index of clicked screenshot
-    event: React.MouseEvent<HTMLDivElement> // Click event object
+    index: number,
+    event: React.MouseEvent<HTMLDivElement>
   ) => {
-    // Find the <img> element inside the clicked div
+    // Get the image element from the clicked item
     const imgEl = event.currentTarget.querySelector("img");
-    if (!imgEl) return; // Safety check if image element not found
+    if (!imgEl) return; // If no image element, return
 
-    // Get bounding client rect of image for animation origin
+    // Get the bounding client rect of the image
     const rect = imgEl.getBoundingClientRect();
-
-    // Set selected state with image rect and index to open modal
-    setSelected({ originRect: rect, index });
+    setSelected({ originRect: rect, index }); // Set the selected state with the origin rect and index
   };
 
-  // Close modal by clearing selected state
+  // handleClose - Resets the selected state to close the modal
   const handleClose = () => setSelected(null);
+
+  // getOriginRect - Retrieves the DOMRect of the image at the given index
+  const getOriginRect = (index: number) => {
+    const el = itemRefs.current[index]; // Get the image element from the clicked item
+    if (!el) return null; // If no image element, return null
+
+    // Get the image element from the clicked item
+    const imgEl = el.querySelector("img");
+    if (!imgEl) return null; // If no image element, return null
+
+    return imgEl.getBoundingClientRect(); // Return the bounding client rect of the image
+  };
 
   return (
     <>
-      {/* Grid container for screenshot thumbnails */}
+      {/* Screenshot grid layout */}
       <ul className="grid grid-cols-2 md:grid-cols-3 gap-4 py-4">
-        {/* Map over screenshots to render each GameScreenshotsItem */}
         {screenshots.map((screenshot, i) => (
           <GameScreenshotsItem
-            key={i} // Unique key per item by index
-            screenshot={screenshot} // Pass screenshot object
-            onClick={(e) => handleItemClick(i, e)} // Pass click handler with index
+            key={i}
+            screenshot={screenshot}
+            onClick={(e) => handleItemClick(i, e)}
+            ref={(el: HTMLDivElement | null) => {
+              itemRefs.current[i] = el; // Store reference for later bounding box access
+            }}
           />
         ))}
       </ul>
 
-      {/* Conditionally render ScreenshotModal if a screenshot is selected */}
+      {/* Screenshot modal with animated zoom effect and index-based navigation */}
       {selected && (
         <ScreenshotModal
           images={screenshots.map((s) => ({
             ...s,
-            originRect: selected.originRect, // Pass origin rect for animation to each image
+            originRect: selected.originRect, // Attach current originRect to each image object
           }))}
-          initialIndex={selected.index} // Set initial image index in modal
-          onClose={handleClose} // Close modal handler callback
+          initialIndex={selected.index}
+          onClose={handleClose}
+          getOriginRect={getOriginRect}
         />
       )}
     </>
