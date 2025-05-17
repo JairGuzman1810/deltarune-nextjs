@@ -1,15 +1,15 @@
 "use client"; // Enable client-side rendering
 
-import { useFadeInOnScroll } from "@/hook/useFadeInOnScroll";
+import { useScrollFadeIn } from "@/hook/useScrollFadeIn";
 import Image from "next/image";
 import ParticleField from "../components/about/particle-field";
 
 // AboutSection - Section that displays the animated particle background with logo and title
 export const AboutSection = () => {
-  const { ref, style } = useFadeInOnScroll(); // Scroll-triggered fade-in animation
+  const { ref, className } = useScrollFadeIn(0.05); // Scroll-triggered fade-in animation
 
   return (
-    <section id="about" ref={ref} style={style}>
+    <section id="about" ref={ref} className={className}>
       {/* Container with relative layout to position image and overlay content */}
       <div className="relative flex justify-center">
         {/* ParticleField background animation */}

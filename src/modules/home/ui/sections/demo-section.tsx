@@ -1,20 +1,19 @@
 "use client"; // Enable client-side rendering
 
-import { useFadeInOnScroll } from "@/hook/useFadeInOnScroll";
+import { useScrollFadeIn } from "@/hook/useScrollFadeIn";
 import Image from "next/image";
 import { PlatformCard } from "../components/demo/platform-card";
 import { Starfield } from "../components/demo/star-field";
 
 // DemoSection - Demo section with background, logo, and platform cards
 export const DemoSection = () => {
-  const { ref, style } = useFadeInOnScroll(); // Scroll-triggered fade-in animation
+  const { ref, className } = useScrollFadeIn();
 
   return (
     <section
       id="demo"
       ref={ref}
-      style={style}
-      className="relative w-full text-center mb-32 pt-8"
+      className={`relative w-full text-center mb-32 pt-8 ${className}`}
     >
       {/* Background animated starfield */}
       <Starfield />
