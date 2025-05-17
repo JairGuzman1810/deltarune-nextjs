@@ -1,5 +1,3 @@
-"use client"; // Enables client-side rendering
-
 import { ParticleData } from "@/lib/type";
 import { useEffect, useState } from "react";
 import { Particle } from "./particle";
