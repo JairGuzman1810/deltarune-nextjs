@@ -2,7 +2,7 @@
 
 import { useScrollFadeIn } from "@/hook/useScrollFadeIn";
 import Image from "next/image";
-import { GameScreenshotsGrid } from "../components/about/game-screenshots-grid";
+import { GameScreenshots } from "../components/about/game-screenshots";
 import ParticleField from "../components/about/particle-field";
 
 // AboutSection - Section that displays the animated particle background with logo and title
@@ -104,8 +104,8 @@ export const AboutSection = () => {
             <li>... only 1 ending...?</li>
           </ul>
 
-          {/* Game screenshots grid */}
-          <GameScreenshotsGrid />
+          {/* Game screenshots */}
+          <GameScreenshots />
         </div>
       </div>
     </section>
