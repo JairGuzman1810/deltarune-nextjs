@@ -7,10 +7,10 @@ import ParticleField from "../components/about/particle-field";
 
 // AboutSection - Section that displays the animated particle background with logo and title
 export const AboutSection = () => {
-  const { ref, className } = useScrollFadeIn(0.05); // Scroll-triggered fade-in animation
+  const { ref, className, style } = useScrollFadeIn(0.14); // Scroll-triggered fade-in animation
 
   return (
-    <section id="about" ref={ref} className={className}>
+    <section id="about" ref={ref} className={className} style={style}>
       {/* Container with relative layout to position image and overlay content */}
       <div className="relative flex justify-center">
         {/* ParticleField background animation */}

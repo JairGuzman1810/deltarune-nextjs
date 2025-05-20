@@ -7,13 +7,14 @@ import { Starfield } from "../components/demo/star-field";
 
 // DemoSection - Demo section with background, logo, and platform cards
 export const DemoSection = () => {
-  const { ref, className } = useScrollFadeIn();
+  const { ref, className, style } = useScrollFadeIn(0.6);
 
   return (
     <section
       id="demo"
       ref={ref}
       className={`relative w-full text-center mb-32 pt-8 ${className}`}
+      style={style}
     >
       {/* Background animated starfield */}
       <Starfield />
