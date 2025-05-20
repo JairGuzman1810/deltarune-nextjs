@@ -1,20 +1,20 @@
 "use client"; // Enable client-side rendering
 
-import { useScrollFadeIn } from "@/hook/useScrollFadeIn";
+import { useParafade } from "@/hook/useParafade";
 import Image from "next/image";
 import { PlatformCard } from "../components/demo/platform-card";
 import { Starfield } from "../components/demo/star-field";
 
 // DemoSection - Demo section with background, logo, and platform cards
 export const DemoSection = () => {
-  const { ref, className, style } = useScrollFadeIn(0.6);
+  const { ref, style } = useParafade();
 
   return (
     <section
       id="demo"
       ref={ref}
-      className={`relative w-full text-center mb-32 pt-8 ${className}`}
       style={style}
+      className="relative w-full text-center mb-32 pt-8"
     >
       {/* Background animated starfield */}
       <Starfield />

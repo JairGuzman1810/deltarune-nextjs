@@ -1,16 +1,16 @@
 "use client"; // Enable client-side rendering
 
-import { useScrollFadeIn } from "@/hook/useScrollFadeIn";
+import { useParafade } from "@/hook/useParafade";
 import Image from "next/image";
 import { GameScreenshots } from "../components/about/game-screenshots";
 import ParticleField from "../components/about/particle-field";
 
 // AboutSection - Section that displays the animated particle background with logo and title
 export const AboutSection = () => {
-  const { ref, className, style } = useScrollFadeIn(0.14); // Scroll-triggered fade-in animation
+  const { ref, style } = useParafade();
 
   return (
-    <section id="about" ref={ref} className={className} style={style}>
+    <section id="about" ref={ref} style={style}>
       {/* Container with relative layout to position image and overlay content */}
       <div className="relative flex justify-center">
         {/* ParticleField background animation */}
