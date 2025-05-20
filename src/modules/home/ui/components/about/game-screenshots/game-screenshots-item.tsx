@@ -25,7 +25,6 @@ export const GameScreenshotsItem = ({
           width={640} // Image width in pixels
           height={480} // Image height in pixels
           className="aspect-4/3 object-cover" // Maintain 4:3 aspect ratio with image covering area
-          draggable={false} // Disable drag behavior on the image
         />
       </div>
     </Link>

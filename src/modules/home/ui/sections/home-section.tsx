@@ -13,6 +13,8 @@ export const HomeSection = () => {
         width={194}
         height={1434}
         className="absolute w-24 md:w-32 top-0 left-4 md:-left-16 z-[-10] motion-safe:animate-fade-in-top motion-safe:translate-y-0 h-[695px] md:h-[800px]"
+        aria-hidden="true"
+        draggable="false"
       />
 
       {/* Right spire image rotated 180° with fade-in-top animation */}
@@ -22,6 +24,8 @@ export const HomeSection = () => {
         width={194}
         height={1434}
         className="absolute w-24 md:w-32 -top-96 right-4 md:-right-16 z-[-10] rotate-180 motion-safe:animate-fade-in-top motion-safe:translate-y-0"
+        aria-hidden="true"
+        draggable="false"
       />
 
       {/* Centered DELTARUNE logo */}
