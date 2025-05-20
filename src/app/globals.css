@@ -3,6 +3,11 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --nav-blue: #342db5;
+  --deltarune-yellow: #f9ff10;
+  --deltarune-gray: #7f7f7f;
+  --deltarune-blue: #0000ff;
+  --deltarune-shadow: #0f0f70;
 }
 
 @theme inline {
