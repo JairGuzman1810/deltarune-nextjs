@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from "react";
 // useParafade - Custom hook to fade in an element as it scrolls into view, with optional persistent visibility
 export const useParafade = (
   options = {
-    duration: 1000, // Duration of the opacity transition (ms)
+    duration: 500, // Duration of the opacity transition (ms)
     ease: "ease-in-out", // CSS easing for the transition
     keepVisible: false, // Whether to keep the element visible after fade-in
   }
