@@ -1,3 +1,4 @@
+import { Footer } from "@/modules/home/ui/components/footer";
 import { Navbar } from "@/modules/home/ui/components/navbar";
 
 // LayoutProps - Props for the Layout component
@@ -13,6 +14,8 @@ const Layout = ({ children }: LayoutProps) => {
       <Navbar />
       {/* Render the page content */}
       {children}
+      {/* Render the footer */}
+      <Footer />
     </div>
   );
 };
