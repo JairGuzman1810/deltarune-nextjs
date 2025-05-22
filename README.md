@@ -12,6 +12,8 @@ The primary goal of this project is to learn and implement various web developme
 *   Implementing interactive elements like countdown timers and video players in Next.js.
 *   Exploring scroll reveal animations and parallax effects with custom JavaScript.
 *   Utilizing external libraries like Fancybox for image galleries.
+*   Implementing basic SEO and social sharing metadata.
+*   Practicing reading and understanding code from browser developer tools.
 
 This project is a result of personal curiosity and enthusiasm for DELTARUNE while awaiting the release of Chapters 3 and 4. All external links are intentionally removed or self-referencing to prevent any potential misuse or confusion.
 
