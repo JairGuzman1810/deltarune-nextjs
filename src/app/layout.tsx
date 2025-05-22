@@ -10,7 +10,7 @@ const font8bitOperatorPlusBold = localFont({
 
 // metadata - SEO and social metadata for the site
 export const metadata: Metadata = {
-  metadataBase: new URL("https://localhost:3000"),
+  metadataBase: new URL("https://deltarune-nextjs.vercel.app"),
 
   title: "DELTARUNE for Nintendo Switch, PC / Mac, and PlayStation",
   description:
