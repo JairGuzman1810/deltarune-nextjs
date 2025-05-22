@@ -1,13 +1,15 @@
 // news-links - Static list of social icons with href, src, and alt
 export const newsLinks = [
   {
-    href: "https://bsky.app/profile/undertale.com",
+    id: 1,
+    href: "/",
     src: "/assets/images/social-bluesky.svg",
     alt: "undertale.com on Bluesky",
   },
   {
-    href: "https://x.com/undertale",
+    id: 2,
+    href: "/",
     src: "/assets/images/social-twitter.svg",
     alt: "undertale on X / Twitter",
   },
-] as const;
+];

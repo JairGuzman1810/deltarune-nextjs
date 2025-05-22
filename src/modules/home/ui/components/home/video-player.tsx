@@ -21,7 +21,7 @@ export const VideoPlayer = () => {
     >
       {/* If playing, show embedded YouTube iframe */}
       {isPlaying ? (
-        <div className="relative border-2 border-deltarune-gray aspect-video bg-black hover:border-white transition-colors">
+        <div className="relative transition-colors bg-black border-2 border-deltarune-gray aspect-video hover:border-white">
           <iframe
             src="https://www.youtube-nocookie.com/embed/yDzgiGdekas?autoplay=1"
             className="w-full h-full"
@@ -32,7 +32,7 @@ export const VideoPlayer = () => {
       ) : (
         // If not playing, show thumbnail with play button overlay
         <div
-          className="group relative border-2 border-deltarune-gray aspect-video bg-black hover:border-white transition-colors cursor-pointer"
+          className="relative transition-colors bg-black border-2 cursor-pointer group border-deltarune-gray aspect-video hover:border-white"
           onClick={() => setIsPlaying(true)} // Enable playback when user clicks the thumbnail
         >
           {/* Thumbnail image */}
@@ -42,16 +42,16 @@ export const VideoPlayer = () => {
               alt="Video Player"
               width={1920}
               height={1080}
-              className="w-full h-full object-cover"
+              className="object-cover w-full h-full"
             />
             {/* Semi-transparent overlay */}
-            <div className="absolute inset-0 bg-black/50 group-hover:bg-black/30 transition-colors" />
+            <div className="absolute inset-0 transition-colors bg-black/50 group-hover:bg-black/30" />
           </div>
 
           {/* Centered play button */}
           <div className="absolute inset-0 flex items-center justify-center">
             <button
-              className="w-16 h-16 rounded-full bg-deltarune-blue/75 group-hover:bg-deltarune-blue/90 flex items-center justify-center transition-all"
+              className="flex items-center justify-center w-16 h-16 transition-all rounded-full bg-deltarune-blue/75 group-hover:bg-deltarune-blue/90"
               onClick={(e) => {
                 e.stopPropagation(); // Prevent triggering parent click event
                 setIsPlaying(true); // Start video playback
@@ -71,10 +71,10 @@ export const VideoPlayer = () => {
       >
         By clicking to view this video, you agree to{" "}
         <Link
-          href="https://www.youtube.com/howyoutubeworks/our-commitments/protecting-user-data/"
+          href="/"
           target="_blank"
           rel="noopener noreferrer"
-          className="underline opacity-100 hover:opacity-90 transition-colors"
+          className="underline transition-colors opacity-100 hover:opacity-90"
         >
           YouTube&apos;s Privacy Policy
         </Link>

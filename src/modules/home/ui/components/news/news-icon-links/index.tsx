@@ -8,7 +8,7 @@ export const NewsIconLinks = () => {
       {/* Render each link in the newsLinks array */}
       {newsLinks.map((link) => (
         <NewsIconLinkItem
-          key={link.href}
+          key={link.id}
           href={link.href}
           src={link.src}
           alt={link.alt}
