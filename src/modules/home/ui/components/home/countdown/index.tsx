@@ -30,16 +30,16 @@ export const Countdown = () => {
   }, []); // Empty dependency array means this effect runs once when the component mounts
 
   return (
-    <div>
+    <div className="motion-safe:opacity-0 motion-safe:animate-fade-in">
       {/* Header displaying the release date */}
-      <h3 className="highlight-yellow text-xl md:text-3xl text-center m-4 min-h-10">
+      <h3 className="m-4 text-xl text-center highlight-yellow md:text-3xl min-h-10">
         Releasing on June 4, 2025
       </h3>
 
       {/* Countdown timer in pixel font */}
-      <h3 className="text-deltarune-gray text-3xl md:text-5xl text-center mb-4 h-16">
+      <h3 className="h-16 mb-4 text-3xl text-center text-deltarune-gray md:text-5xl">
         {/* Flex container for time units */}
-        <div className="flex gap-x-2 items-center justify-center">
+        <div className="flex items-center justify-center gap-x-2">
           {/* TimeUnit component for each unit of time */}
           <TimeUnit value={timeLeft.days} /> {/* Display days */}
           <TimeUnit value={timeLeft.hours} /> {/* Display hours */}
@@ -48,7 +48,7 @@ export const Countdown = () => {
         </div>
       </h3>
 
-      <h3 className="text-deltarune-gray text-center mb-12 min-h-10 text-base">
+      <h3 className="mb-12 text-base text-center text-deltarune-gray min-h-10">
         * June 5 in Japan, Australia, and New Zealand
       </h3>
     </div>
