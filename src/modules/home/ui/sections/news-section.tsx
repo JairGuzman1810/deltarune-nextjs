@@ -1,11 +1,19 @@
+"use client"; // Enable client-side rendering
+
+import { useParafade } from "@/hook/useParafade";
 import { NewsIconLinks } from "../components/news/news-icon-links";
+import { NewsList } from "../components/news/news-list";
 import { NewsTextLink } from "../components/news/news-text-link";
 
 // NewsSection - News section that displays the mailing list and social media links
 export const NewsSection = () => {
+  const { ref, style } = useParafade();
+
   return (
     <section
       id="news"
+      ref={ref}
+      style={style}
       className="container mx-auto max-w-2xl text-center flex flex-col gap-4 px-4"
     >
       {/* Section heading */}
@@ -28,6 +36,9 @@ export const NewsSection = () => {
         {/* Social media icon links */}
         <NewsIconLinks />
       </div>
+
+      {/* News list */}
+      <NewsList />
     </section>
   );
 };
